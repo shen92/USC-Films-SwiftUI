@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct PosterCarousel: View {
   var title: String = "";
@@ -24,15 +23,13 @@ struct PosterCarousel: View {
               destination: DetailsView(id: item.id, mediaType: item.mediaType),
               label: {
                 ZStack {
-                  KFImage(URL(string: item.posterPath))
-                    .resizable()
+                  RemoteImage(url: item.posterPath)
                     .scaledToFill()
                     .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                     .frame(width: geometry.size.width ,height: geometry.size.height)
                     .blur(radius: 5.0)
                     .clipped()
-                  KFImage(URL(string: item.posterPath))
-                    .resizable()
+                  RemoteImage(url: item.posterPath)
                     .scaledToFill()
                     .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                     .frame(width: geometry.size.width * 0.6 ,height: geometry.size.height)

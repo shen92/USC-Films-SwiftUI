@@ -8,8 +8,6 @@
 import SwiftUI
 import Alamofire
 import SwiftyJSON
-import Kingfisher
-import UIKit
 
 struct SearchView: View {
   @State private var searchString: String = "";

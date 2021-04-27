@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct PosterList: View {
   @Environment(\.colorScheme) var colorScheme;
@@ -26,8 +25,7 @@ struct PosterList: View {
                 destination: DetailsView(id: item.id, mediaType: item.mediaType),
                 label: {
                   VStack(alignment: .center){
-                    KFImage(URL(string: item.posterPath))
-                      .resizable()
+                    RemoteImage(url: item.posterPath)
                       .aspectRatio(contentMode: .fit)
                       .cornerRadius(10.0)
                       .frame(width: 92);

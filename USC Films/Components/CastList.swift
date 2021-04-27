@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct CastList: View {
   @Environment(\.colorScheme) var colorScheme;
@@ -23,8 +22,7 @@ struct CastList: View {
           if(data.count != 0){
             ForEach(data) { item in
               VStack(alignment: .center){
-                KFImage(URL(string: item.profilePath))
-                  .resizable()
+                RemoteImage(url: item.profilePath)
                   .aspectRatio(contentMode: .fill)
                   .frame(width: 90.0, height: 90.0)
                   .clipShape(Circle())

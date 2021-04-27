@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct ResultCard: View {
   var result: Result = Result();
@@ -15,8 +14,7 @@ struct ResultCard: View {
       destination: DetailsView(id: self.result.id, mediaType: self.result.mediaType),
       label: {
         ZStack{
-          KFImage(URL(string: self.result.backdropPath))
-            .resizable()
+          RemoteImage(url: self.result.backdropPath)
             .aspectRatio(contentMode: .fit)
             .cornerRadius(10.0)
             .frame(maxWidth: .infinity)

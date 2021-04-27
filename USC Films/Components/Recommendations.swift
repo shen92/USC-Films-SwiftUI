@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct Recommendations: View {
   var data: Array<Preview> = [];
@@ -24,8 +23,7 @@ struct Recommendations: View {
               NavigationLink(
                 destination: DetailsView(id: item.id, mediaType: item.mediaType),
                 label: {
-                  KFImage(URL(string: item.posterPath))
-                    .resizable()
+                  RemoteImage(url: item.posterPath)
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(10.0)
                     .frame(width: 110)
