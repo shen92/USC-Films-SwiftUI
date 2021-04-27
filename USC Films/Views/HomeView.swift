@@ -63,23 +63,21 @@ struct HomeView: View {
           ScrollView(.vertical){
             VStack(alignment: .leading){
               if contentMode == 1 {
-                VStack {
-                  PosterCarousel(title: "Now Playing", data: self.currentlyPlayingMovies)
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                  PosterList(title: "Top Rated", data: self.topRatedMovies)
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                  PosterList(title: "Popular", data: self.popularMovies)
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                }
+                PosterCarousel(title: "Now Playing", data: self.currentlyPlayingMovies)
+                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                PosterList(title: "Top Rated", data: self.topRatedMovies)
+                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+                PosterList(title: "Popular", data: self.popularMovies)
+                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+                
               } else {
-                VStack {
-                  PosterCarousel(title: "Trending", data: self.trendingTVShows)
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                  PosterList(title: "Top Rated", data: self.topRatedTVShows)
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                  PosterList(title: "Popular", data: self.popularTVShows)
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                }
+                PosterCarousel(title: "Trending", data: self.trendingTVShows)
+                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+                PosterList(title: "Top Rated", data: self.topRatedTVShows)
+                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+                PosterList(title: "Popular", data: self.popularTVShows)
+                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+                
               }
               Footer();
             }
