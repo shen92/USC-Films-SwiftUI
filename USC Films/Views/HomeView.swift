@@ -32,7 +32,7 @@ struct HomeView: View {
             let id = json["data"][i]["id"].stringValue;
             let name = mediaType == "tv" ? json["data"][i]["name"].stringValue : json["data"][i]["title"].stringValue;
             let date = mediaType == "tv" ?
-              String(json["data"][i]["first_on_air_date"].stringValue.prefix(4)) :
+              String(json["data"][i]["first_air_date"].stringValue.prefix(4)) :
               String(json["data"][i]["release_date"].stringValue.prefix(4));
             let posterPath = json["data"][i]["poster_path"].stringValue;
             let preview = Preview(id: id, name: name, date: date, posterPath: posterPath, mediaType: mediaType);
