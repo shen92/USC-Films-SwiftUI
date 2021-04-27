@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppView: View {
-  @State private var selection = 0
+  @State private var selection = 1
   
   var body: some View {
     TabView(selection: $selection) {
