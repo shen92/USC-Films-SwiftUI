@@ -20,28 +20,31 @@ struct PosterList: View {
       ScrollView(.horizontal) {
         HStack(alignment: .top){
           if(data.count != 0){
-            //            DetailsView(id: item.id, mediaType: item.mediaType)
             ForEach(self.data){ item in
-              VStack(alignment: .center){
-                RemoteImage(url: item.posterPath)
-                  .aspectRatio(contentMode: .fit)
-                  .cornerRadius(10.0)
-                  .frame(width: 92)
-                Text("\(item.name)")
-                  .font(.caption)
-                  .fontWeight(.bold)
-                  .multilineTextAlignment(.center)
-                  .frame(width: 92)
-                  .foregroundColor(colorScheme == .dark ? .white: .black);
-                Text("(\(item.date))")
-                  .font(.caption)
-                  .multilineTextAlignment(.center)
-                  .frame(width: 92)
-                  .foregroundColor(Color.gray);
+              NavigationLink(destination: DetailsView(id: item.id, mediaType: item.mediaType)
+              ){
+                VStack(alignment: .center){
+                  RemoteImage(url: item.posterPath)
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(10.0)
+                    .frame(width: 92)
+                  Text("\(item.name)")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 92)
+                    .foregroundColor(colorScheme == .dark ? .white: .black);
+                  Text("(\(item.date))")
+                    .font(.caption)
+                    .multilineTextAlignment(.center)
+                    .frame(width: 92)
+                    .foregroundColor(Color.gray);
+                }
               }
               .background(colorScheme == .dark ? Color.black: Color.white)
               .clipShape(RoundedRectangle(cornerRadius: 10))
               .contentShape(RoundedRectangle(cornerRadius: 10))
+              .buttonStyle(PlainButtonStyle())
               .contextMenu{
                 VStack {
                   Button(
