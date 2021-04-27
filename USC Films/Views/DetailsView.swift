@@ -227,18 +227,19 @@ struct DetailsView: View {
             }
           }
           .padding(.horizontal)
-        }.navigationBarItems(trailing: HStack {
-          Image(systemName: "bookmark")
-          Image(colorScheme == .dark ? "facebook-dark" : "facebook")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-          Image(colorScheme == .dark ? "twitter-dark" : "twitter")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-        })
-        
+        }
+        .navigationBarItems(
+          trailing: HStack {
+            Image(systemName: "bookmark")
+            Image(colorScheme == .dark ? "facebook-dark" : "facebook")
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Image(colorScheme == .dark ? "twitter-dark" : "twitter")
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+          })
       }else {
         LoadingView()
       }

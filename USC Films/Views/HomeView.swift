@@ -61,28 +61,24 @@ struct HomeView: View {
       if(isLoaded()) {
         NavigationView {
           ScrollView(.vertical){
-            VStack(alignment: .leading){
-              if contentMode == 1 {
-                PosterCarousel(title: "Now Playing", data: self.currentlyPlayingMovies)
-                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                PosterList(title: "Top Rated", data: self.topRatedMovies)
-                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                PosterList(title: "Popular", data: self.popularMovies)
-                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                
-              } else {
-                PosterCarousel(title: "Trending", data: self.trendingTVShows)
-                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                PosterList(title: "Top Rated", data: self.topRatedTVShows)
-                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                PosterList(title: "Popular", data: self.popularTVShows)
-                  .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
-                
-              }
-              Footer();
+            if contentMode == 1 {
+              PosterCarousel(title: "Now Playing", data: self.currentlyPlayingMovies)
+                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+              PosterList(title: "Top Rated", data: self.topRatedMovies)
+                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+              PosterList(title: "Popular", data: self.popularMovies)
+                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+            } else {
+              PosterCarousel(title: "Trending", data: self.trendingTVShows)
+                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+              PosterList(title: "Top Rated", data: self.topRatedTVShows)
+                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
+              PosterList(title: "Popular", data: self.popularTVShows)
+                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
             }
-            
+            Footer();
           }
+          .padding(.horizontal)
           .navigationTitle("USC Films")
           .navigationBarItems(
             trailing:
@@ -96,7 +92,7 @@ struct HomeView: View {
               )
           )
           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-          .padding(.horizontal)
+          
         }
         .navigationViewStyle(StackNavigationViewStyle())
       }else {

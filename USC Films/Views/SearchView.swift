@@ -103,8 +103,6 @@ struct SearchView: View {
           }
           
         }
-        .padding(.horizontal)
-        
         .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
         VStack{
           if(self.loaded && self.searchResults.count == 0){
@@ -119,11 +117,11 @@ struct SearchView: View {
                 }
               }
             }
-            .padding(.horizontal)
           }}
           .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .top)
-        
-      }.navigationTitle("Search")
+      }
+      .padding(.horizontal)
+      .navigationTitle("Search")
     }
     
     .navigationViewStyle(StackNavigationViewStyle())
