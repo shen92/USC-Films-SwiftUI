@@ -9,8 +9,10 @@ import Foundation
 
 class ToastController: ObservableObject {
   @Published var displayToaster: Bool
+  @Published var toasterMessage: String;
   
   init(){
-    self.displayToaster = false;
+    self.displayToaster = false ;
+    self.toasterMessage = "";
   }
 }

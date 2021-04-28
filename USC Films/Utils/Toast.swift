@@ -25,7 +25,9 @@ struct Toast<Presenting>: View where Presenting: View {
         self.presenting()
         
         VStack {
-          self.text
+          Text(self.toastController.toasterMessage)
+            .multilineTextAlignment(.center)
+            .foregroundColor(.white)
         }
         .frame(
           width: geometry.size.width * 0.8,
@@ -33,7 +35,10 @@ struct Toast<Presenting>: View where Presenting: View {
         .background(Color.gray)
         .foregroundColor(Color.primary)
         .cornerRadius(geometry.size.height / 5)
-        .transition(.slide)
+        .padding(.bottom, 64.0)
+        .transition(
+          .asymmetric(insertion: .identity, removal: .opacity)
+        )
         .opacity(self.toastController.displayToaster ? 1 : 0)
         .onChange(of: self.toastController.displayToaster, perform: { value in
           DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

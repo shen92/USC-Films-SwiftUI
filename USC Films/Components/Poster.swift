@@ -90,6 +90,9 @@ struct Poster: View {
               }
               self.isInWatchList.toggle()
               self.toastController.displayToaster = true;
+              self.toastController.toasterMessage = self.isInWatchList ?
+                "\(item.name) was added to Watchlist":
+                "\(item.name) was removed from Watchlist"
             },
             label: {
               Text(self.isInWatchList ? "Remove from watchList" : "Add to watchList")

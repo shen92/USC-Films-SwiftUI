@@ -11,6 +11,7 @@ import SwiftyJSON
 
 struct DetailsView: View {
   @Environment(\.colorScheme) var colorScheme;
+  @EnvironmentObject var toastController: ToastController;
   
   var id: String = "";
   var mediaType: String = "";
@@ -281,6 +282,10 @@ struct DetailsView: View {
                   }
                 }
                 self.isInWatchList.toggle()
+                self.toastController.displayToaster = true;
+                self.toastController.toasterMessage = self.isInWatchList ?
+                  "\(self.mediaDetails.title) was added to Watchlist":
+                  "\(self.mediaDetails.title) was removed from Watchlist"
               },
               label: {
                 Image(systemName: self.isInWatchList ? "bookmark.fill" : "bookmark")
