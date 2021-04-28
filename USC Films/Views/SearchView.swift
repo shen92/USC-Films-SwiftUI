@@ -105,6 +105,7 @@ struct SearchView: View {
         VStack{
           if(self.loaded && self.searchResults.count == 0){
             Text("No Results")
+              .font(.title2)
               .foregroundColor(.gray)
               .padding(.top)
           }else {

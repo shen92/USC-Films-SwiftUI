@@ -78,7 +78,7 @@ struct HomeView: View {
             }
             Footer()
               .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-              .padding(.bottom, 4.0);
+              .padding(.bottom, 16.0);
           }
           .padding(.horizontal)
           .navigationTitle("USC Films")
