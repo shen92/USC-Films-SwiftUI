@@ -168,9 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				AA761AC7263840A800147A46 /* Debouncer.swift */,
-				AAF6A2452637D1020007D6C2 /* ImageCarousel.swift */,
-				AA761ADB2638634700147A46 /* RemoteImage.swift */,
-				AA761AE32639814900147A46 /* Toast.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -186,6 +183,9 @@
 		AAECE5B5263032A800219B69 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AAF6A2452637D1020007D6C2 /* ImageCarousel.swift */,
+				AA761ADB2638634700147A46 /* RemoteImage.swift */,
+				AA761AE32639814900147A46 /* Toast.swift */,
 				AAF6A2232636D5080007D6C2 /* CastList.swift */,
 				AAECE6202632DDAE00219B69 /* Footer.swift */,
 				AAECE5B6263032C500219B69 /* PosterCarousel.swift */,

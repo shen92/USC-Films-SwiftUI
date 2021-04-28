@@ -289,6 +289,7 @@ struct DetailsView: View {
               },
               label: {
                 Image(systemName: self.isInWatchList ? "bookmark.fill" : "bookmark")
+                  .foregroundColor(self.isInWatchList ? /*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/ : .black)
               }
             )
             .buttonStyle(PlainButtonStyle())
