@@ -18,8 +18,8 @@ struct SearchView: View {
   let debouncer = Debouncer(delay: 0.5)
   
   func fetchMediaList() {
-    self.loaded = false;
-    AF.request("\(Config.BASE_URL.rawValue)/api/v1/search/\(self.searchString)")
+    let validSearchString = self.searchString.replacingOccurrences(of: " ", with: "%20")
+    AF.request("\(Config.BASE_URL.rawValue)/api/v1/search/\(validSearchString)")
       .validate()
       .responseJSON { (response) in
         switch response.result {
@@ -91,6 +91,7 @@ struct SearchView: View {
               self.isEditing = false;
               self.searchString = "";
               self.loaded = false;
+              hideKeyboard();
             }, label: {
               Text("Cancel")
             })
@@ -126,9 +127,8 @@ struct SearchView: View {
     .navigationViewStyle(StackNavigationViewStyle())
     .onChange(of: searchString) { _ in
       debouncer.run{
-        if(self.searchString == "") {
-          self.searchResults = [];
-        } else {
+        self.loaded = false;
+        if(self.searchString.count >= 3){
           fetchMediaList()
         }
       }
