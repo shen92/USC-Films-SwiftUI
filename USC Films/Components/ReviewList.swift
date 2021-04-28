@@ -24,6 +24,7 @@ struct ReviewList: View {
       }
     }
     .padding(.top)
+    
   }
 }
 

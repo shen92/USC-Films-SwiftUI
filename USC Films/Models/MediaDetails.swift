@@ -18,6 +18,7 @@ class MediaDetails: Identifiable, Equatable {
   var genres: String;
   var description: String;
   var rate: String;
+  var posterPath: String;
   
   init(){
     self.id = "";
@@ -26,14 +27,16 @@ class MediaDetails: Identifiable, Equatable {
     self.genres = "";
     self.description = "";
     self.rate = "";
+    self.posterPath = "";
   }
   
-  init(id:String, title: String, date: String, genres: String, description: String, rate: String) {
+  init(id:String, title: String, date: String, genres: String, description: String, rate: String, posterPath: String) {
     self.id = id;
     self.title = title;
     self.date = date;
     self.genres = genres;
     self.description = description;
     self.rate = rate;
+    self.posterPath = posterPath;
   }
 }

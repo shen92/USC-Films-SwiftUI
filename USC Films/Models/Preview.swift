@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Preview: Identifiable, Equatable {
+class Preview: Identifiable, Equatable, Codable {
   static func == (lhs: Preview, rhs: Preview) -> Bool {
     return lhs.id == rhs.id
   }

@@ -22,6 +22,7 @@ struct DetailsView: View {
   @State private var recommendations: Array<Preview> = [];
   
   @State private var showFullDescription: Bool = false;
+  @State private var isInWatchList: Bool = false;
   
   func fetchDetails() {
     AF.request("\(Config.BASE_URL.rawValue)/api/v1/\(self.mediaType)/\(self.id)/details")
@@ -46,6 +47,7 @@ struct DetailsView: View {
           let rate = String(
             format: "%.1f", json["data"]["vote_average"].floatValue / 2
           );
+          let posterPath = json["data"]["poster_path"].stringValue;
           let mediaDetails =
             MediaDetails(
               id: self.id,
@@ -53,7 +55,8 @@ struct DetailsView: View {
               date: dateString,
               genres: genres,
               description: description,
-              rate: rate
+              rate: rate,
+              posterPath: posterPath
             )
           self.mediaDetails = mediaDetails;
         case .failure(let error):
@@ -201,7 +204,7 @@ struct DetailsView: View {
               .lineLimit(self.showFullDescription ? nil : 3)
             Button(
               action: {
-                self.showFullDescription = !self.showFullDescription
+                self.showFullDescription.toggle()
               },
               label: {
                 Text("\(self.showFullDescription ? "Show less" : "Show more..")")
@@ -230,7 +233,61 @@ struct DetailsView: View {
         }
         .navigationBarItems(
           trailing: HStack {
-            Image(systemName: "bookmark")
+            Button(
+              action: {
+                let decoder = JSONDecoder();
+                let encoder = JSONEncoder();
+                if let data = UserDefaults.standard.data(forKey: "watchList") {
+                  do {
+                    var savedWatchList = try decoder.decode([Preview].self, from: data)
+                    do {
+                      if !savedWatchList.contains(where: { $0.id == self.id }) {
+                        //Append to tail
+                        savedWatchList.append(Preview(
+                          id: self.id,
+                          name: self.mediaDetails.title,
+                          date: self.mediaDetails.date,
+                          posterPath: self.mediaDetails.posterPath,
+                          mediaType: self.mediaType
+                        ))
+                      } else {
+                        //Remove from index
+                        if let i = savedWatchList.firstIndex(where: {$0.id == self.id }) {
+                          savedWatchList.remove(at: i)
+                        }
+                      }
+                      let data = try encoder.encode(savedWatchList)
+                      UserDefaults.standard.set(data, forKey: "watchList")
+                    } catch {
+                      print("Unable to Encode Array of Notes (\(error))")
+                    }
+                  } catch {
+                    print("Unable to Decode Notes (\(error))")
+                  }
+                }
+                else {
+                  do {
+                    let newWatchList = [Preview(
+                      id: self.id,
+                      name: self.mediaDetails.title,
+                      date: self.mediaDetails.date,
+                      posterPath: self.mediaDetails.posterPath,
+                      mediaType: self.mediaType
+                    )];
+                    let data = try encoder.encode(newWatchList)
+                    UserDefaults.standard.set(data, forKey: "watchList")
+                  } catch {
+                    print("Unable to Encode Array of Notes (\(error))")
+                  }
+                }
+                self.isInWatchList.toggle()
+              },
+              label: {
+                Image(systemName: self.isInWatchList ? "bookmark.fill" : "bookmark")
+              }
+            )
+            .buttonStyle(PlainButtonStyle())
+            
             Image(colorScheme == .dark ? "facebook-dark" : "facebook")
               .resizable()
               .aspectRatio(contentMode: .fit)
@@ -245,6 +302,19 @@ struct DetailsView: View {
       }
     }
     .onAppear {
+      do {
+        let decoder = JSONDecoder();
+        if let data = UserDefaults.standard.data(forKey: "watchList") {
+          do {
+            let savedWatchList = try decoder.decode([Preview].self, from: data)
+            if savedWatchList.contains(where: { $0.id == self.id }) {
+              self.isInWatchList = true;
+            }
+          } catch {
+            print("Unable to Encode Array of Notes (\(error))")
+          }
+        }
+      }
       fetchDetails();
       fetchVideoId();
       fetchCasts();

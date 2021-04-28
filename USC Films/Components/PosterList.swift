@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PosterList: View {
   @Environment(\.colorScheme) var colorScheme;
+  @State private var isInWatchList = false;
   var title: String = "";
   var data: Array<Preview> = [];
   
@@ -47,14 +48,77 @@ struct PosterList: View {
                 .contextMenu{
                   VStack {
                     Button(
-                      action: {},
-                      label: {
-                        HStack{
-                          Text("Add to watchList")
-                          Image(systemName: "bookmark")
+                      action: {
+                        let decoder = JSONDecoder();
+                        let encoder = JSONEncoder();
+                        if let data = UserDefaults.standard.data(forKey: "watchList") {
+                          do {
+                            var savedWatchList = try decoder.decode([Preview].self, from: data)
+                            do {
+                              if !savedWatchList.contains(where: { $0.id == item.id }) {
+                                //Append to tail
+                                savedWatchList.append(Preview(
+                                  id: item.id,
+                                  name: item.name,
+                                  date: item.date,
+                                  posterPath: item.posterPath,
+                                  mediaType: item.mediaType
+                                ))
+                              } else {
+                                //Remove from index
+                                if let i = savedWatchList.firstIndex(where: {$0.id == item.id }) {
+                                  savedWatchList.remove(at: i)
+                                }
+                              }
+                              let data = try encoder.encode(savedWatchList)
+                              UserDefaults.standard.set(data, forKey: "watchList")
+                            } catch {
+                              print("Unable to Encode Array of Notes (\(error))")
+                            }
+                          } catch {
+                            print("Unable to Decode Notes (\(error))")
+                          }
                         }
+                        else {
+                          do {
+                            let newWatchList = [Preview(
+                              id: item.id,
+                              name: item.name,
+                              date: item.date,
+                              posterPath: item.posterPath,
+                              mediaType: item.mediaType
+                            )];
+                            let data = try encoder.encode(newWatchList)
+                            UserDefaults.standard.set(data, forKey: "watchList")
+                          } catch {
+                            print("Unable to Encode Array of Notes (\(error))")
+                          }
+                        }
+                        self.isInWatchList.toggle()
+                      },
+                      label: {
+                        Text(self.isInWatchList ? "Remove from watchList" : "Add to watchList")
+                        Image(systemName: self.isInWatchList ? "bookmark.fill" : "bookmark")
                       }
                     )
+                    .buttonStyle(PlainButtonStyle())
+                    .onAppear {
+                      do {
+                        let decoder = JSONDecoder();
+                        if let data = UserDefaults.standard.data(forKey: "watchList") {
+                          do {
+                            let savedWatchList = try decoder.decode([Preview].self, from: data)
+                            if savedWatchList.contains(where: { $0.id == item.id }) {
+                              self.isInWatchList = true;
+                            }
+                          } catch {
+                            print("Unable to Encode Array of Notes (\(error))")
+                          }
+                        } else {
+                          self.isInWatchList = false;
+                        }
+                      }
+                    }
                     Button(
                       action: {},
                       label: {
@@ -90,5 +154,6 @@ struct PosterList: View {
       }
       .frame(maxWidth: .infinity, alignment: .topLeading)
     }
+    
   }
 }
