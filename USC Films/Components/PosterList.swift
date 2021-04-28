@@ -21,7 +21,8 @@ struct PosterList: View {
         HStack(alignment: .top){
           if(data.count != 0){
             ForEach(self.data){ item in
-              NavigationLink(destination: DetailsView(id: item.id, mediaType: item.mediaType)
+              NavigationLink(
+                destination: DetailsView(id: item.id, mediaType: item.mediaType)
               ){
                 VStack(alignment: .center){
                   RemoteImage(url: item.posterPath)
@@ -40,48 +41,48 @@ struct PosterList: View {
                     .frame(width: 92)
                     .foregroundColor(Color.gray);
                 }
-              }
-              .background(colorScheme == .dark ? Color.black: Color.white)
-              .clipShape(RoundedRectangle(cornerRadius: 10))
-              .contentShape(RoundedRectangle(cornerRadius: 10))
-              .buttonStyle(PlainButtonStyle())
-              .contextMenu{
-                VStack {
-                  Button(
-                    action: {},
-                    label: {
-                      HStack{
-                        Text("Add to watchList")
-                        Image(systemName: "bookmark")
+                .background(colorScheme == .dark ? Color.black: Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .contentShape(RoundedRectangle(cornerRadius: 10))
+                .contextMenu{
+                  VStack {
+                    Button(
+                      action: {},
+                      label: {
+                        HStack{
+                          Text("Add to watchList")
+                          Image(systemName: "bookmark")
+                        }
                       }
-                    }
-                  )
-                  Button(
-                    action: {},
-                    label: {
-                      HStack{
-                        Text("Share on Facebook")
-                        Image(colorScheme == .dark ? "facebook-dark" : "facebook")
-                          .resizable()
-                          .aspectRatio(contentMode: .fit)
-                          .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    )
+                    Button(
+                      action: {},
+                      label: {
+                        HStack{
+                          Text("Share on Facebook")
+                          Image(colorScheme == .dark ? "facebook-dark" : "facebook")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        }
                       }
-                    }
-                  )
-                  Button(
-                    action: {},
-                    label: {
-                      HStack{
-                        Text("Share on Twitter")
-                        Image(colorScheme == .dark ? "twitter-dark" : "twitter")
-                          .resizable()
-                          .aspectRatio(contentMode: .fit)
-                          .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    )
+                    Button(
+                      action: {},
+                      label: {
+                        HStack{
+                          Text("Share on Twitter")
+                          Image(colorScheme == .dark ? "twitter-dark" : "twitter")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        }
                       }
-                    }
-                  )
+                    )
+                  }
                 }
               }
+              .buttonStyle(PlainButtonStyle())
               .padding(.trailing)
             }
           }
