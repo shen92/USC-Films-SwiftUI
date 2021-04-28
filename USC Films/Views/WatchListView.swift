@@ -11,6 +11,7 @@ struct WatchListView: View {
   @EnvironmentObject var toastController: ToastController;
   
   @State private var watchList: Array<Preview> = [];
+  @State private var target: Preview = Preview();
   
   let columns = [
     GridItem(.adaptive(minimum: 100))
@@ -24,6 +25,21 @@ struct WatchListView: View {
             LazyVGrid(columns: columns) {
               ForEach(self.watchList) { item in
                 WatchListItem(item: item)
+                  .onDrag({
+                    self.target = item;
+                    return NSItemProvider(
+                      contentsOf: URL(string: "\(item.id)")!
+                    )!
+                  })
+                  .onDrop(
+                    of: [.url],
+                    delegate:
+                      DropViewDelegate(
+                        target: self.target,
+                        destination: item,
+                        watchList: $watchList
+                      )
+                  )
               }
             }
             .padding(.horizontal)
@@ -60,6 +76,16 @@ struct WatchListView: View {
           }
         }
       }
+    })
+    .onChange(of: watchList, perform: { value in
+      do {
+        let encoder = JSONEncoder();
+        let data = try encoder.encode(self.watchList)
+        UserDefaults.standard.set(data, forKey: "watchList")
+      } catch {
+        print("Unable to Encode Array of Notes (\(error))")
+      }
+      
     })
   }
 }
