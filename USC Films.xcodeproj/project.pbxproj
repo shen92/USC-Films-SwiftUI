@@ -21,6 +21,7 @@
 		AA761AE126397D0500147A46 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761AE026397D0500147A46 /* Poster.swift */; };
 		AA761AE42639814900147A46 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761AE32639814900147A46 /* Toast.swift */; };
 		AA761AE92639973000147A46 /* ToastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761AE82639973000147A46 /* ToastController.swift */; };
+		AA761AEE2639E99200147A46 /* WatchListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761AED2639E99200147A46 /* WatchListItem.swift */; };
 		AAECE5B7263032C500219B69 /* PosterCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5B6263032C500219B69 /* PosterCarousel.swift */; };
 		AAECE5C12630331600219B69 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5C02630331600219B69 /* DetailsView.swift */; };
 		AAECE5C42630341C00219B69 /* PosterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5C32630341C00219B69 /* PosterList.swift */; };
@@ -64,6 +65,7 @@
 		AA761AE026397D0500147A46 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
 		AA761AE32639814900147A46 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		AA761AE82639973000147A46 /* ToastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastController.swift; sourceTree = "<group>"; };
+		AA761AED2639E99200147A46 /* WatchListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListItem.swift; sourceTree = "<group>"; };
 		AAECE5B6263032C500219B69 /* PosterCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCarousel.swift; sourceTree = "<group>"; };
 		AAECE5C02630331600219B69 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		AAECE5C32630341C00219B69 /* PosterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterList.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				AAF6A23426373C270007D6C2 /* YoutubePlayer.swift */,
 				AA761AC1263827CC00147A46 /* ResultCard.swift */,
 				AA761AE026397D0500147A46 /* Poster.swift */,
+				AA761AED2639E99200147A46 /* WatchListItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				AAECE5B7263032C500219B69 /* PosterCarousel.swift in Sources */,
 				AAF6A22E2636DDAE0007D6C2 /* Recommendations.swift in Sources */,
 				AA761AE92639973000147A46 /* ToastController.swift in Sources */,
+				AA761AEE2639E99200147A46 /* WatchListItem.swift in Sources */,
 				AA761AE42639814900147A46 /* Toast.swift in Sources */,
 				AAF6A2242636D5080007D6C2 /* CastList.swift in Sources */,
 				AA6E011F262EEEB900815E94 /* WatchListView.swift in Sources */,

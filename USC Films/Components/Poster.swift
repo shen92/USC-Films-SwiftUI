@@ -97,8 +97,10 @@ struct Poster: View {
                 "\(item.name) was removed from Watchlist"
             },
             label: {
-              Text(self.isInWatchList ? "Remove from watchList" : "Add to watchList")
-              Image(systemName: self.isInWatchList ? "bookmark.fill" : "bookmark")
+              HStack{
+                Text(self.isInWatchList ? "Remove from watchList" : "Add to watchList")
+                Image(systemName: self.isInWatchList ? "bookmark.fill" : "bookmark")
+              }
             }
           )
           .buttonStyle(PlainButtonStyle())
@@ -164,7 +166,23 @@ struct Poster: View {
         }
       }
     }
-    
+    .onChange(of: self.toastController.displayToaster, perform: { value in
+      do {
+        let decoder = JSONDecoder();
+        if let data = UserDefaults.standard.data(forKey: "watchList") {
+          do {
+            let savedWatchList = try decoder.decode([Preview].self, from: data)
+            if savedWatchList.contains(where: { $0.id == item.id }) {
+              self.isInWatchList = true;
+            } else {
+              self.isInWatchList = false;
+            }
+          } catch {
+            print("Unable to Encode Array of Notes (\(error))")
+          }
+        }
+      }
+    })
   }
 }
 
