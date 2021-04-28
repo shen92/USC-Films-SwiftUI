@@ -34,7 +34,10 @@ struct PosterCarousel: View {
                     .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                     .frame(width: geometry.size.width * 0.6 ,height: geometry.size.height)
                     .clipped()
-                }.frame(height: 300, alignment: .center)})
+                }
+                .frame(height: 300, alignment: .center)}
+            )
+            .buttonStyle(PlainButtonStyle())
           }
         }
       }
