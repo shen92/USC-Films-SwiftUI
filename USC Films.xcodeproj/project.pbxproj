@@ -124,6 +124,7 @@
 		AA6E0105262EEE5900815E94 /* USC Films */ = {
 			isa = PBXGroup;
 			children = (
+				AA761ADE2639425800147A46 /* Utils */,
 				AAECE5F526316B8B00219B69 /* Models */,
 				AAECE5B5263032A800219B69 /* Components */,
 				AA6E0116262EEE8600815E94 /* Views */,
@@ -158,6 +159,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AA761ADE2639425800147A46 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AA761AC7263840A800147A46 /* Debouncer.swift */,
+				AAF6A2452637D1020007D6C2 /* ImageCarousel.swift */,
+				AA761ADB2638634700147A46 /* RemoteImage.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		AAECE5B5263032A800219B69 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,9 +180,7 @@
 				AAF6A2302636F5410007D6C2 /* ReviewCard.swift */,
 				AAF6A2262636D5340007D6C2 /* ReviewList.swift */,
 				AAF6A23426373C270007D6C2 /* YoutubePlayer.swift */,
-				AAF6A2452637D1020007D6C2 /* ImageCarousel.swift */,
 				AA761AC1263827CC00147A46 /* ResultCard.swift */,
-				AA761ADB2638634700147A46 /* RemoteImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -185,7 +194,6 @@
 				AAF6A2172636B85C0007D6C2 /* Cast.swift */,
 				AAF6A21A2636B8630007D6C2 /* Review.swift */,
 				AA761AC42638292400147A46 /* Result.swift */,
-				AA761AC7263840A800147A46 /* Debouncer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
