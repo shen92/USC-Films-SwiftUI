@@ -11,6 +11,7 @@ import SwiftyJSON
 
 struct DetailsView: View {
   @Environment(\.colorScheme) var colorScheme;
+  @Environment(\.openURL) var openURL;
   @EnvironmentObject var toastController: ToastController;
   
   var id: String = "";
@@ -295,14 +296,31 @@ struct DetailsView: View {
             )
             .buttonStyle(PlainButtonStyle())
             
-            Image(colorScheme == .dark ? "facebook-dark" : "facebook")
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Image(colorScheme == .dark ? "twitter-dark" : "twitter")
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            
+            Button(
+              action: {
+                openURL(URL(string: "https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=\(self.videoID)")!)
+              },
+              label: {
+                Image(colorScheme == .dark ? "facebook-dark" : "facebook")
+                  .resizable()
+                  .aspectRatio(contentMode: .fit)
+                  .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+              })
+              .buttonStyle(PlainButtonStyle())
+            
+            Button(
+              action: {
+                openURL(URL(string: "https://twitter.com/intent/tweet?hashtags=CSCI571USCFilms&text=Check%20out%20this%20link%3A%0Ahttps%3A%2F%2Fwww.themoviedb.org%2F\(self.mediaType)%2F\(self.id)")!)
+              },
+              label: {
+                Image(colorScheme == .dark ? "twitter-dark" : "twitter")
+                  .resizable()
+                  .aspectRatio(contentMode: .fit)
+                  .frame(width: 20, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+              })
+              .buttonStyle(PlainButtonStyle())
+            
           })
       }else {
         LoadingView()

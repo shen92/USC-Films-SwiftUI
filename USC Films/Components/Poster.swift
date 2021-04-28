@@ -112,7 +112,6 @@ struct Poster: View {
                   case .success(let value):
                     let json = JSON(value);
                     let videoID = json["data"][0]["key"].stringValue;
-                    print(videoID)
                     openURL(URL(string: "https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=\(videoID)")!)
                   case .failure(let error):
                     print(error)
