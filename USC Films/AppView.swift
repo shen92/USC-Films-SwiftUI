@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppView: View {
-  @State private var selection = 2
+  @State private var selection = 1
   @State private var showToast: Bool = true;
   
   var body: some View {

@@ -76,7 +76,9 @@ struct HomeView: View {
               PosterList(title: "Popular", data: self.popularTVShows)
                 .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/);
             }
-            Footer();
+            Footer()
+              .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+              .padding(.bottom, 4.0);
           }
           .padding(.horizontal)
           .navigationTitle("USC Films")
