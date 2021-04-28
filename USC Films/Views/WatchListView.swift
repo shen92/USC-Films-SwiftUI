@@ -24,22 +24,59 @@ struct WatchListView: View {
           ScrollView(.vertical){
             LazyVGrid(columns: columns) {
               ForEach(self.watchList) { item in
-                WatchListItem(item: item)
-                  .onDrag({
-                    self.target = item;
-                    return NSItemProvider(
-                      contentsOf: URL(string: "\(item.id)")!
-                    )!
-                  })
-                  .onDrop(
-                    of: [.url],
-                    delegate:
-                      DropViewDelegate(
-                        target: self.target,
-                        destination: item,
-                        watchList: $watchList
+                NavigationLink(
+                  destination: DetailsView(id: item.id, mediaType: item.mediaType)
+                ){
+                  RemoteImage(url: item.posterPath)
+                    .aspectRatio(contentMode: .fit)
+                    .onDrag({
+                      self.target = item;
+                      return NSItemProvider(
+                        contentsOf: URL(string: "\(item.id)")!
+                      )!
+                    })
+                    .onDrop(
+                      of: [.url],
+                      delegate:
+                        DropViewDelegate(
+                          target: self.target,
+                          destination: item,
+                          watchList: $watchList
+                        )
+                    )
+                    .contextMenu{
+                      Button(
+                        action: {
+                          let decoder = JSONDecoder();
+                          let encoder = JSONEncoder();
+                          if let data = UserDefaults.standard.data(forKey: "watchList") {
+                            do {
+                              var savedWatchList = try decoder.decode([Preview].self, from: data)
+                              do {
+                                if let i = savedWatchList.firstIndex(where: {$0.id == item.id }) {
+                                  savedWatchList.remove(at: i)
+                                }
+                                let data = try encoder.encode(savedWatchList)
+                                UserDefaults.standard.set(data, forKey: "watchList")
+                              } catch {
+                                print("Unable to Encode Array of Notes (\(error))")
+                              }
+                            } catch {
+                              print("Unable to Decode Notes (\(error))")
+                            }
+                          }
+                          self.toastController.displayToaster = true;
+                          self.toastController.toasterMessage = "\(item.name) was removed from Watchlist"
+                        },
+                        label: {
+                          Text("Remove from watchList")
+                          Image(systemName: "bookmark.fill")
+                        }
                       )
-                  )
+                      .buttonStyle(PlainButtonStyle())
+                    }
+                }
+                .buttonStyle(PlainButtonStyle())
               }
             }
             .padding(.horizontal)
