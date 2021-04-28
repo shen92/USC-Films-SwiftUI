@@ -10,6 +10,8 @@ import SwiftUI
 struct WatchListView: View {
   
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"WatchList View"/*@END_MENU_TOKEN@*/)
+      VStack {
+        
+      }
     }
 }

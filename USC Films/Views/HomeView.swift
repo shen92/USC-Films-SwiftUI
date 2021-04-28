@@ -118,7 +118,6 @@ struct HomeView: View {
         result in self.popularTVShows = result
       }
     }
-    
   }
 }
 
