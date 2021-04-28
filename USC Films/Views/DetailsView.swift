@@ -348,7 +348,6 @@ struct DetailsView: View {
       fetchReviews();
       fetchRecommendations();
     }
-    
   }
 }
 
