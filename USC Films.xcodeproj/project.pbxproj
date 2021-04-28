@@ -130,17 +130,17 @@
 		AA6E0105262EEE5900815E94 /* USC Films */ = {
 			isa = PBXGroup;
 			children = (
-				AA761AE72639971D00147A46 /* Controllers */,
-				AA761ADE2639425800147A46 /* Utils */,
-				AAECE5F526316B8B00219B69 /* Models */,
-				AAECE5B5263032A800219B69 /* Components */,
-				AA6E0116262EEE8600815E94 /* Views */,
-				AA6E0106262EEE5900815E94 /* USC_FilmsApp.swift */,
-				AA6E0108262EEE5900815E94 /* AppView.swift */,
-				AA6E010A262EEE5B00815E94 /* Assets.xcassets */,
 				AA6E010F262EEE5B00815E94 /* Info.plist */,
-				AA6E010C262EEE5B00815E94 /* Preview Content */,
+				AA6E0108262EEE5900815E94 /* AppView.swift */,
 				AAECE61726317BBC00219B69 /* Config.swift */,
+				AA6E0106262EEE5900815E94 /* USC_FilmsApp.swift */,
+				AA6E010A262EEE5B00815E94 /* Assets.xcassets */,
+				AAECE5B5263032A800219B69 /* Components */,
+				AA761AE72639971D00147A46 /* Controllers */,
+				AAECE5F526316B8B00219B69 /* Models */,
+				AA6E010C262EEE5B00815E94 /* Preview Content */,
+				AA761ADE2639425800147A46 /* Utils */,
+				AA6E0116262EEE8600815E94 /* Views */,
 			);
 			path = "USC Films";
 			sourceTree = "<group>";
@@ -177,8 +177,8 @@
 		AA761AE72639971D00147A46 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AA761AE82639973000147A46 /* ToastController.swift */,
 				AA761AF02639F2F900147A46 /* DropViewDelegate.swift */,
+				AA761AE82639973000147A46 /* ToastController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,19 +186,19 @@
 		AAECE5B5263032A800219B69 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				AAF6A2452637D1020007D6C2 /* ImageCarousel.swift */,
-				AA761ADB2638634700147A46 /* RemoteImage.swift */,
-				AA761AE32639814900147A46 /* Toast.swift */,
 				AAF6A2232636D5080007D6C2 /* CastList.swift */,
 				AAECE6202632DDAE00219B69 /* Footer.swift */,
+				AAF6A2452637D1020007D6C2 /* ImageCarousel.swift */,
+				AA761AE026397D0500147A46 /* Poster.swift */,
 				AAECE5B6263032C500219B69 /* PosterCarousel.swift */,
 				AAECE5C32630341C00219B69 /* PosterList.swift */,
 				AAF6A22D2636DDAE0007D6C2 /* Recommendations.swift */,
+				AA761ADB2638634700147A46 /* RemoteImage.swift */,
+				AA761AC1263827CC00147A46 /* ResultCard.swift */,
 				AAF6A2302636F5410007D6C2 /* ReviewCard.swift */,
 				AAF6A2262636D5340007D6C2 /* ReviewList.swift */,
+				AA761AE32639814900147A46 /* Toast.swift */,
 				AAF6A23426373C270007D6C2 /* YoutubePlayer.swift */,
-				AA761AC1263827CC00147A46 /* ResultCard.swift */,
-				AA761AE026397D0500147A46 /* Poster.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -206,11 +206,11 @@
 		AAECE5F526316B8B00219B69 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AAF6A2172636B85C0007D6C2 /* Cast.swift */,
 				AAECE5FA26316BB700219B69 /* MediaDetails.swift */,
 				AAECE5FD26316BCE00219B69 /* Preview.swift */,
-				AAF6A2172636B85C0007D6C2 /* Cast.swift */,
-				AAF6A21A2636B8630007D6C2 /* Review.swift */,
 				AA761AC42638292400147A46 /* Result.swift */,
+				AAF6A21A2636B8630007D6C2 /* Review.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
