@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import Alamofire
+import SwiftyJSON
 
 struct Poster: View {
   @Environment(\.colorScheme) var colorScheme;
+  @Environment(\.openURL) var openURL
   
   @EnvironmentObject var toastController: ToastController;
   @State private var isInWatchList = false;
-  
   
   var item: Preview = Preview();
   
@@ -102,7 +104,21 @@ struct Poster: View {
           .buttonStyle(PlainButtonStyle())
           
           Button(
-            action: {},
+            action: {
+              AF.request("\(Config.BASE_URL.rawValue)/api/v1/\(self.item.mediaType)/\(self.item.id)/video")
+                .validate()
+                .responseJSON { (response) in
+                  switch response.result {
+                  case .success(let value):
+                    let json = JSON(value);
+                    let videoID = json["data"][0]["key"].stringValue;
+                    print(videoID)
+                    openURL(URL(string: "https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=\(videoID)")!)
+                  case .failure(let error):
+                    print(error)
+                  }
+                }
+            },
             label: {
               HStack{
                 Text("Share on Facebook")
@@ -114,7 +130,9 @@ struct Poster: View {
             }
           )
           Button(
-            action: {},
+            action: {
+              openURL(URL(string: "https://twitter.com/intent/tweet?hashtags=CSCI571USCFilms&text=Check%20out%20this%20link%3A%0Ahttps%3A%2F%2Fwww.themoviedb.org%2F\(self.item.mediaType)%2F\(self.item.id)")!)
+            },
             label: {
               HStack{
                 Text("Share on Twitter")
