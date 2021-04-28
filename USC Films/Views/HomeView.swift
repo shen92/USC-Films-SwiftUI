@@ -92,7 +92,6 @@ struct HomeView: View {
               )
           )
           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-          
         }
         .navigationViewStyle(StackNavigationViewStyle())
       }else {
@@ -119,6 +118,7 @@ struct HomeView: View {
         result in self.popularTVShows = result
       }
     }
+    
   }
 }
 

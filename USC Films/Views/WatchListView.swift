@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WatchListView: View {
-  @EnvironmentObject var watchList: WatchList;
   
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"WatchList View"/*@END_MENU_TOKEN@*/)

@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct USC_FilmsApp: App {
-  @StateObject var watchList = WatchList();
+  @ObservedObject var toastController: ToastController = ToastController();
   
   var body: some Scene {
     WindowGroup {
-      AppView().environmentObject(watchList)
+      AppView().environmentObject(toastController)
     }
   }
 }

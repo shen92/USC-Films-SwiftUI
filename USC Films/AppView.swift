@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct AppView: View {
+  
+  
   @State private var selection = 1
+  @State private var showToast: Bool = true;
   
   var body: some View {
     TabView(selection: $selection) {
@@ -28,6 +31,7 @@ struct AppView: View {
         }
         .tag(2)
     }
+    .toast(text: Text("Hello toast!"))
   }
 }
 

@@ -9,8 +9,13 @@ import SwiftUI
 
 struct Poster: View {
   @Environment(\.colorScheme) var colorScheme;
+  
+  @EnvironmentObject var toastController: ToastController;
   @State private var isInWatchList = false;
+  
+  
   var item: Preview = Preview();
+  
   var body: some View {
     NavigationLink(
       destination: DetailsView(id: item.id, mediaType: item.mediaType)
@@ -67,8 +72,8 @@ struct Poster: View {
                 } catch {
                   print("Unable to Decode Notes (\(error))")
                 }
-              }
-              else {
+              } else {
+                //Create new watchList
                 do {
                   let newWatchList = [Preview(
                     id: item.id,
@@ -84,6 +89,7 @@ struct Poster: View {
                 }
               }
               self.isInWatchList.toggle()
+              self.toastController.displayToaster = true;
             },
             label: {
               Text(self.isInWatchList ? "Remove from watchList" : "Add to watchList")
@@ -118,8 +124,10 @@ struct Poster: View {
           )
         }
       }
+      
     }
     .buttonStyle(PlainButtonStyle())
+    
     .onAppear {
       do {
         let decoder = JSONDecoder();
@@ -137,6 +145,7 @@ struct Poster: View {
         }
       }
     }
+    
   }
 }
 

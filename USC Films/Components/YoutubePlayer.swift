@@ -13,7 +13,7 @@ struct YTWrapper : UIViewRepresentable {
   
   func makeUIView(context: Context) -> YTPlayerView {
     let playerView = YTPlayerView()
-    playerView.load(withVideoId: videoID)
+    playerView.load(withVideoId: videoID, playerVars: ["playsinline" : 1])
     return playerView
   }
   

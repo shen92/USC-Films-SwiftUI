@@ -19,13 +19,14 @@
 		AA761AC8263840A800147A46 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761AC7263840A800147A46 /* Debouncer.swift */; };
 		AA761ADC2638634700147A46 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761ADB2638634700147A46 /* RemoteImage.swift */; };
 		AA761AE126397D0500147A46 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761AE026397D0500147A46 /* Poster.swift */; };
+		AA761AE42639814900147A46 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761AE32639814900147A46 /* Toast.swift */; };
+		AA761AE92639973000147A46 /* ToastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA761AE82639973000147A46 /* ToastController.swift */; };
 		AAECE5B7263032C500219B69 /* PosterCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5B6263032C500219B69 /* PosterCarousel.swift */; };
 		AAECE5C12630331600219B69 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5C02630331600219B69 /* DetailsView.swift */; };
 		AAECE5C42630341C00219B69 /* PosterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5C32630341C00219B69 /* PosterList.swift */; };
 		AAECE5C82631090900219B69 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AAECE5C72631090900219B69 /* Alamofire */; };
 		AAECE5CC2631095400219B69 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = AAECE5CB2631095400219B69 /* SwiftyJSON */; };
 		AAECE5D02631097500219B69 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AAECE5CF2631097500219B69 /* Kingfisher */; };
-		AAECE5F726316BA700219B69 /* WatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5F626316BA700219B69 /* WatchList.swift */; };
 		AAECE5FB26316BB700219B69 /* MediaDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5FA26316BB700219B69 /* MediaDetails.swift */; };
 		AAECE5FE26316BCE00219B69 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE5FD26316BCE00219B69 /* Preview.swift */; };
 		AAECE61826317BBC00219B69 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAECE61726317BBC00219B69 /* Config.swift */; };
@@ -61,10 +62,11 @@
 		AA761AC7263840A800147A46 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		AA761ADB2638634700147A46 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		AA761AE026397D0500147A46 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
+		AA761AE32639814900147A46 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		AA761AE82639973000147A46 /* ToastController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastController.swift; sourceTree = "<group>"; };
 		AAECE5B6263032C500219B69 /* PosterCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCarousel.swift; sourceTree = "<group>"; };
 		AAECE5C02630331600219B69 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		AAECE5C32630341C00219B69 /* PosterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterList.swift; sourceTree = "<group>"; };
-		AAECE5F626316BA700219B69 /* WatchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchList.swift; sourceTree = "<group>"; };
 		AAECE5FA26316BB700219B69 /* MediaDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetails.swift; sourceTree = "<group>"; };
 		AAECE5FD26316BCE00219B69 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		AAECE61726317BBC00219B69 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		AA6E0105262EEE5900815E94 /* USC Films */ = {
 			isa = PBXGroup;
 			children = (
+				AA761AE72639971D00147A46 /* Controllers */,
 				AA761ADE2639425800147A46 /* Utils */,
 				AAECE5F526316B8B00219B69 /* Models */,
 				AAECE5B5263032A800219B69 /* Components */,
@@ -167,8 +170,17 @@
 				AA761AC7263840A800147A46 /* Debouncer.swift */,
 				AAF6A2452637D1020007D6C2 /* ImageCarousel.swift */,
 				AA761ADB2638634700147A46 /* RemoteImage.swift */,
+				AA761AE32639814900147A46 /* Toast.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AA761AE72639971D00147A46 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA761AE82639973000147A46 /* ToastController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		AAECE5B5263032A800219B69 /* Components */ = {
@@ -191,7 +203,6 @@
 		AAECE5F526316B8B00219B69 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AAECE5F626316BA700219B69 /* WatchList.swift */,
 				AAECE5FA26316BB700219B69 /* MediaDetails.swift */,
 				AAECE5FD26316BCE00219B69 /* Preview.swift */,
 				AAF6A2172636B85C0007D6C2 /* Cast.swift */,
@@ -344,7 +355,6 @@
 				AAF6A21B2636B8630007D6C2 /* Review.swift in Sources */,
 				AA761ADC2638634700147A46 /* RemoteImage.swift in Sources */,
 				AAF6A23526373C270007D6C2 /* YoutubePlayer.swift in Sources */,
-				AAECE5F726316BA700219B69 /* WatchList.swift in Sources */,
 				AA6E0118262EEE9800815E94 /* HomeView.swift in Sources */,
 				AAECE5C42630341C00219B69 /* PosterList.swift in Sources */,
 				AAECE5FE26316BCE00219B69 /* Preview.swift in Sources */,
@@ -354,6 +364,8 @@
 				AA6E0109262EEE5900815E94 /* AppView.swift in Sources */,
 				AAECE5B7263032C500219B69 /* PosterCarousel.swift in Sources */,
 				AAF6A22E2636DDAE0007D6C2 /* Recommendations.swift in Sources */,
+				AA761AE92639973000147A46 /* ToastController.swift in Sources */,
+				AA761AE42639814900147A46 /* Toast.swift in Sources */,
 				AAF6A2242636D5080007D6C2 /* CastList.swift in Sources */,
 				AA6E011F262EEEB900815E94 /* WatchListView.swift in Sources */,
 				AAF6A2462637D1020007D6C2 /* ImageCarousel.swift in Sources */,
