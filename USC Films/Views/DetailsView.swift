@@ -267,6 +267,7 @@ struct DetailsView: View {
                   }
                 }
                 else {
+                  //Create new watchList
                   do {
                     let newWatchList = [Preview(
                       id: self.id,

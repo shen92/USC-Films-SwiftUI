@@ -130,7 +130,6 @@ struct Poster: View {
       
     }
     .buttonStyle(PlainButtonStyle())
-    
     .onAppear {
       do {
         let decoder = JSONDecoder();
