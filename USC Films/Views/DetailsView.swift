@@ -348,6 +348,23 @@ struct DetailsView: View {
       fetchReviews();
       fetchRecommendations();
     }
+    .onChange(of: toastController.displayToaster, perform: { value in
+      do {
+        let decoder = JSONDecoder();
+        if let data = UserDefaults.standard.data(forKey: "watchList") {
+          do {
+            let savedWatchList = try decoder.decode([Preview].self, from: data)
+            if savedWatchList.contains(where: { $0.id == self.id }) {
+              self.isInWatchList = true;
+            } else {
+              self.isInWatchList = false;
+            }
+          } catch {
+            print("Unable to Encode Array of Notes (\(error))")
+          }
+        }
+      }
+    })
   }
 }
 
