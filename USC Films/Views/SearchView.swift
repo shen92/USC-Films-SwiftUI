@@ -126,10 +126,14 @@ struct SearchView: View {
     
     .navigationViewStyle(StackNavigationViewStyle())
     .onChange(of: searchString) { _ in
-      debouncer.run{
-        self.loaded = false;
-        if(self.searchString.count >= 3){
-          fetchMediaList()
+      if(self.searchString == "") {
+        self.searchResults = []
+      } else {
+        debouncer.run{
+          self.loaded = false;
+          if(self.searchString.count >= 3){
+            fetchMediaList()
+          }
         }
       }
     }
