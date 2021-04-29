@@ -48,8 +48,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>API BaseURL</key>
-	<string>${API_BASE_URL}</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -57,5 +55,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+   		<key>NSExceptionMinimumTLSVersion</key>
+   		<string>TLSv1.0</string>
+    	<key>NSAllowsArbitraryLoads</key>
+    	<true/>
+	</dict>
 </dict>
 </plist>
